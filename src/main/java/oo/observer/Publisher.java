@@ -2,11 +2,22 @@ package oo.observer;
 
 import oo.observer.msg.Message;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Publisher {
+    final List<Subscriber> subscribers = new ArrayList<>();
 
-    void addListener(Subscriber subscriber);
+    default void addListener(Subscriber subscriber){
+        subscribers.add(subscriber);
+    };
 
-    void removeListener(Subscriber subscriber);
+    default void removeListener(Subscriber subscriber){
+        subscribers.remove(subscriber);
+    };
 
-    void notifyListeners(Message message);
+    default void notifyListeners(Message message){
+        subscribers.forEach(subscriber -> subscriber.accept(message));
+    };
+
 }
