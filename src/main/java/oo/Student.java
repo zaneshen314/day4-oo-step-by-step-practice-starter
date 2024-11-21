@@ -4,14 +4,19 @@ public class Student extends Person {
 
     private Klass klass;
 
+    public Klass getKlass() {
+        return klass;
+    }
+
     public Student(int id, String name, int age) {
         super(id, name, age);
+        this.introduceWords.append(" I am a student.");
     }
 
     public void join(Klass klass) {
         if (klass == null) return;
         this.klass = klass;
-        this.introduceWords.append(" I am a student. I am in class ")
+        this.introduceWords.append(" I am in class ")
                 .append(this.klass.getNumber())
                 .append(".");
     }
