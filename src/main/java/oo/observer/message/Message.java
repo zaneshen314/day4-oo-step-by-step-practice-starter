@@ -1,4 +1,4 @@
-package oo.observer.msg;
+package oo.observer.message;
 
 public abstract class Message {
 

@@ -1,6 +1,6 @@
-package oo.observer;
+package oo.observer.subscriber;
 
-import oo.observer.msg.Message;
+import oo.observer.message.Message;
 
 public interface Subscriber {
 

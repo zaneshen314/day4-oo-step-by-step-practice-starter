@@ -1,7 +1,7 @@
 package oo;
 
-import oo.observer.msg.Message;
-import oo.observer.msg.UpdateKlassLeaderMessage;
+import oo.observer.message.Message;
+import oo.observer.message.UpdateKlassLeaderMessage;
 
 import java.util.HashSet;
 import java.util.Set;

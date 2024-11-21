@@ -1,14 +1,15 @@
 package oo;
 
-import oo.observer.msg.UpdateKlassLeaderMessage;
-import oo.observer.Publisher;
-import oo.observer.Subscriber;
+import oo.observer.publisher.KlassPublisher;
+import oo.observer.message.UpdateKlassLeaderMessage;
+import oo.observer.subscriber.Subscriber;
 
 import java.util.Objects;
 
-public class Klass implements Publisher {
+public class Klass {
     private final int number;
     private Student classLeader;
+    private final KlassPublisher klassPublisher = new KlassPublisher();
 
     public int getNumber() {
         return number;
@@ -18,7 +19,7 @@ public class Klass implements Publisher {
     }
 
     public void attach(Subscriber subscriber) {
-        addListener(subscriber);
+        klassPublisher.addListener(subscriber);
     }
 
     public Klass(int number) {
@@ -43,7 +44,7 @@ public class Klass implements Publisher {
             return;
         }
         this.classLeader = leader;
-        notifyListeners(new UpdateKlassLeaderMessage(this,leader));
+        klassPublisher.notifyListeners(new UpdateKlassLeaderMessage(this,leader));
     }
 
     public boolean isLeader(Student leader) {
