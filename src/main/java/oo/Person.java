@@ -7,19 +7,15 @@ public class Person {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.introduceWords.append("My name is ")
-                .append(this.name)
-                .append(". I am ")
-                .append(this.age)
-                .append(" years old.");
+        this.introduceWords = "My name is " + this.name + ". I am " + this.age + " years old.";
     }
 
     protected int id;
     protected String name;
     protected int age;
-    protected StringBuilder introduceWords = new StringBuilder();
+    protected String introduceWords;
     public String introduce() {
-        return this.introduceWords.toString();
+        return this.introduceWords;
     }
 
     @Override

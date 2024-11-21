@@ -2,12 +2,13 @@ package oo;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Teacher extends Person {
-    private final Set<Klass> assignedClasses = new HashSet<>();
+    private Set<Klass> assignedClasses = new HashSet<>();
     public Teacher(int id, String name, int age) {
         super(id, name, age);
-        this.introduceWords.append(" I am a teacher.");
+        this.introduceWords += " I am a teacher.";
     }
 
     public void assignTo(Klass klass) {
@@ -22,13 +23,13 @@ public class Teacher extends Person {
 
     @Override
     public String introduce() {
-        if (assignedClasses.isEmpty()) return super.introduce();
-        return this.introduceWords.append(" I teach Class ")
-                .append(assignedClasses.stream().map(Klass::getNumber).
-                        toList().toString()
-                        .replace("]","")
-                        .replace("[",""))
-                .append(".").toString();
+        if (assignedClasses.size() != 0) {
+            System.out.println(this.introduceWords);
+            return this.introduceWords + " I teach Class " +
+                    assignedClasses.stream().map(Klass::getNumber).collect(Collectors.toList()).toString()
+                            .replace("]","").replace("[","") + ".";
+        }
+        return this.introduceWords;
     }
 
     public boolean isTeaching(Student student) {

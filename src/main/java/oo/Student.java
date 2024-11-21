@@ -10,15 +10,23 @@ public class Student extends Person {
 
     public Student(int id, String name, int age) {
         super(id, name, age);
-        this.introduceWords.append(" I am a student.");
+        this.introduceWords += " I am a student.";
     }
 
     public void join(Klass klass) {
         if (klass == null) return;
         this.klass = klass;
-        this.introduceWords.append(" I am in class ")
-                .append(this.klass.getNumber())
-                .append(".");
+    }
+
+    @Override
+    public String introduce() {
+        if (klass != null) {
+            if (this.equals(klass.getClassLeader())) {
+                return this.introduceWords + " I am the leader of class " + this.klass.getNumber() + ".";
+            }
+            return this.introduceWords + " I am in class " + this.klass.getNumber() + ".";
+        }
+        return this.introduceWords;
     }
 
     public boolean isIn(Klass klass) {

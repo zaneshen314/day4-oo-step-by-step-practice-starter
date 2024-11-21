@@ -39,6 +39,7 @@ public class Klass {
             return;
         }
         this.classLeader = leader;
+        leader.introduceWords.replace(" I am in class ", " I am the leader of class ");
     }
 
     public boolean isLeader(Student leader) {
