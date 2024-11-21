@@ -2,7 +2,6 @@ package oo;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Teacher extends Person {
     private final Set<Klass> assignedClasses = new HashSet<>();
