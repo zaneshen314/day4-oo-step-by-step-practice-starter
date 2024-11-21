@@ -51,6 +51,6 @@ public class Klass {
     }
 
     public boolean isLeader(Student leader) {
-        return this.classLeader.equals(leader);
+        return leader.equals(this.classLeader);
     }
 }
