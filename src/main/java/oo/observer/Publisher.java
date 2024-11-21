@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Publisher {
-    final List<Subscriber> subscribers = new ArrayList<>();
+    List<Subscriber> subscribers = new ArrayList<>();
 
     default void addListener(Subscriber subscriber){
         subscribers.add(subscriber);

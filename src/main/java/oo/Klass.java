@@ -18,7 +18,7 @@ public class Klass implements Publisher {
     }
 
     public void attach(Subscriber subscriber) {
-        subscribers.add(subscriber);
+        addListener(subscriber);
     }
 
     public Klass(int number) {
