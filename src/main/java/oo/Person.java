@@ -7,18 +7,17 @@ public class Person {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.introduceWords = "My name is " + this.name + ". I am " + this.age + " years old.";
+        this.introduceWords = String.format("My name is %s. I am %d years old.", this.name, this.age);
     }
 
     protected int id;
+    protected String name;
+    protected int age;
+    protected String introduceWords;
 
     public String getName() {
         return name;
     }
-
-    protected String name;
-    protected int age;
-    protected String introduceWords;
     public String introduce() {
         return this.introduceWords;
     }

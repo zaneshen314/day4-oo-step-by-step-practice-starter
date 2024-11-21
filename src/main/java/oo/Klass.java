@@ -1,6 +1,5 @@
 package oo;
 
-import java.util.Set;
 import java.util.Objects;
 
 public class Klass {
