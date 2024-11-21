@@ -24,7 +24,6 @@ public class Teacher extends Person {
     @Override
     public String introduce() {
         if (assignedClasses.size() != 0) {
-            System.out.println(this.introduceWords);
             return this.introduceWords + " I teach Class " +
                     assignedClasses.stream().map(Klass::getNumber).collect(Collectors.toList()).toString()
                             .replace("]","").replace("[","") + ".";

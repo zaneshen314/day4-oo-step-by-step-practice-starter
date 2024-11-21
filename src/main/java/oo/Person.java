@@ -11,6 +11,11 @@ public class Person {
     }
 
     protected int id;
+
+    public String getName() {
+        return name;
+    }
+
     protected String name;
     protected int age;
     protected String introduceWords;
