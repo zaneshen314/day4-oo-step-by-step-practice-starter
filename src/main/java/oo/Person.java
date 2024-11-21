@@ -1,8 +1,10 @@
 package oo;
 
+import oo.observer.KlassObserver;
+
 import java.util.Objects;
 
-public class Person {
+public class Person implements KlassObserver {
     public Person(int id, String name, int age) {
         this.id = id;
         this.name = name;
@@ -42,5 +44,10 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public void updateKlassLeader(Klass klass, Student leader) {
+
     }
 }

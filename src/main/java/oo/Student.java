@@ -39,4 +39,12 @@ public class Student extends Person {
     public boolean isIn(Klass klass) {
         return Objects.equals(this.klass, klass);
     }
+
+    @Override
+    public void updateKlassLeader(Klass klass, Student leader) {
+        if (leader != null) {
+            System.out.printf("I am %s, student of Class %d. I know %s become Leader.%n", name, klass.getNumber(), leader.getName());
+        }
+    }
+
 }

@@ -39,4 +39,11 @@ public class Teacher extends Person {
     public boolean isTeaching(Student student) {
         return student != null && assignedClasses.contains(student.getKlass());
     }
+
+    @Override
+    public void updateKlassLeader(Klass klass, Student leader) {
+        if (leader != null) {
+            System.out.printf("I am %s, teacher of Class %d. I know %s become Leader.%n", name, klass.getNumber(), leader.getName());
+        }
+    }
 }

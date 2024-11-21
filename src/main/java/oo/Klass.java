@@ -1,12 +1,15 @@
 package oo;
 
+import oo.observer.KlassObserver;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Klass {
     private int number;
     private Student classLeader;
-    private Student attachedStudent;
-    private Teacher attachedTeacher;
+    private List<KlassObserver> observers = new ArrayList<>();
 
     public int getNumber() {
         return number;
@@ -15,12 +18,8 @@ public class Klass {
         return classLeader;
     }
 
-    public void attach(Teacher teacher) {
-        if (teacher != null && teacher.belongsTo(this)) attachedTeacher = teacher;
-    }
-
-    public void attach(Student student) {
-        if (student != null && student.isIn(this)) attachedStudent = student;
+    public void attach(KlassObserver observer) {
+        observers.add(observer);
     }
 
     public Klass(int number) {
@@ -45,8 +44,13 @@ public class Klass {
             return;
         }
         this.classLeader = leader;
-        if (attachedStudent != null) System.out.format("I am %s, student of Class %d. I know %s become Leader.", attachedStudent.getName(), this.number, this.classLeader.getName());
-        if (attachedTeacher != null) System.out.format("I am %s, teacher of Class %d. I know %s become Leader.", attachedTeacher.getName(), this.number, this.classLeader.getName());
+        notifyObservers();
+    }
+
+    private void notifyObservers() {
+        for (KlassObserver observer : observers) {
+            observer.updateKlassLeader(this, classLeader);
+        }
     }
 
     public boolean isLeader(Student leader) {
