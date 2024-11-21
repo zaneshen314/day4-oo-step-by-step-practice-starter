@@ -1,5 +1,8 @@
 package oo;
 
+import oo.observer.msg.Message;
+import oo.observer.msg.UpdateKlassLeaderMessage;
+
 import java.util.Objects;
 
 public class Student extends Person {
@@ -40,10 +43,15 @@ public class Student extends Person {
         return Objects.equals(this.klass, klass);
     }
 
-    @Override
     public void updateKlassLeader(Klass klass, Student leader) {
         if (leader != null) {
             System.out.printf("I am %s, student of Class %d. I know %s become Leader.%n", name, klass.getNumber(), leader.getName());
+        }
+    }
+    @Override
+    public void accept(Message message) {
+        if (message instanceof UpdateKlassLeaderMessage updateKlassLeaderMessage){
+            updateKlassLeader(updateKlassLeaderMessage.getKlass(),updateKlassLeaderMessage.getLeader());
         }
     }
 

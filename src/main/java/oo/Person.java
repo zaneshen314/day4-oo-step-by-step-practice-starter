@@ -1,10 +1,12 @@
 package oo;
 
-import oo.observer.KlassObserver;
+import oo.observer.msg.Message;
+import oo.observer.msg.UpdateKlassLeaderMessage;
+import oo.observer.Subscriber;
 
 import java.util.Objects;
 
-public class Person implements KlassObserver {
+public class Person implements Subscriber {
     public Person(int id, String name, int age) {
         this.id = id;
         this.name = name;
@@ -47,7 +49,7 @@ public class Person implements KlassObserver {
     }
 
     @Override
-    public void updateKlassLeader(Klass klass, Student leader) {
+    public void accept(Message message) {
 
     }
 }

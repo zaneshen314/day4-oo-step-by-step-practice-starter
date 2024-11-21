@@ -1,5 +1,8 @@
 package oo;
 
+import oo.observer.msg.Message;
+import oo.observer.msg.UpdateKlassLeaderMessage;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,10 +43,17 @@ public class Teacher extends Person {
         return student != null && assignedClasses.contains(student.getKlass());
     }
 
-    @Override
     public void updateKlassLeader(Klass klass, Student leader) {
         if (leader != null) {
             System.out.printf("I am %s, teacher of Class %d. I know %s become Leader.%n", name, klass.getNumber(), leader.getName());
         }
     }
+
+    @Override
+    public void accept(Message message) {
+        if (message instanceof UpdateKlassLeaderMessage updateKlassLeaderMessage){
+            updateKlassLeader(updateKlassLeaderMessage.getKlass(),updateKlassLeaderMessage.getLeader());
+        }
+    }
+
 }
