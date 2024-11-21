@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public class Klass {
     private int number;
+    private Student classLeader;
 
     public int getNumber() {
         return number;
+    }
+    public Student getClassLeader() {
+        return classLeader;
     }
 
     public void setNumber(int number) {
@@ -27,5 +31,17 @@ public class Klass {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    public void assignLeader(Student leader) {
+        if (leader == null || !this.equals(leader.getKlass())) {
+            System.out.println("It is not one of us.");
+            return;
+        }
+        this.classLeader = leader;
+    }
+
+    public boolean isLeader(Student leader) {
+        return leader.equals(this.classLeader);
     }
 }
